@@ -1,0 +1,40 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red246\green246\blue246;\red255\green255\blue255;
+\red133\green0\blue2;\red14\green110\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c97255\c97255\c97255;\cssrgb\c100000\c100000\c100000;
+\cssrgb\c60000\c0\c0;\cssrgb\c0\c50196\c50196;}
+\margl1440\margr1440\vieww12600\viewh10200\viewkind0
+\deftab720
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f0\b\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 //
+\f1\b0\fs28 \cb4 An easy recurrence for this problem is f[i] = f[i / 2] + i % 2.
+\f0\b\fs24 \cb3 \
+public
+\f2\b0  
+\f0\b int
+\f2\b0 [] 
+\f0\b \cf5 \strokec5 countBits
+\f2\b0 \cf2 \strokec2 (
+\f0\b int
+\f2\b0  num) \{\
+    
+\f0\b int
+\f2\b0 [] f = 
+\f0\b new
+\f2\b0  
+\f0\b int
+\f2\b0 [num + \cf6 \strokec6 1\cf2 \strokec2 ];\
+    
+\f0\b for
+\f2\b0  (
+\f0\b int
+\f2\b0  i=\cf6 \strokec6 1\cf2 \strokec2 ; i<=num; i++) f[i] = f[i >> \cf6 \strokec6 1\cf2 \strokec2 ] + (i & \cf6 \strokec6 1\cf2 \strokec2 );\
+    
+\f0\b return
+\f2\b0  f;\
+\}\cb4 \
+}
