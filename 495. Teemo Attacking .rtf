@@ -1,0 +1,39 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww12600\viewh10200\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 public class Solution \{\
+    public int findPoisonedDuration(int[] timeSeries, int duration) \{\
+        int totalPoisonedTime = 0;\
+        int lastTime = 0;\
+        Stack<Integer> poisonedTimeStack = new Stack<Integer>();\
+        for(int i = 0; i < timeSeries.length; i++)\{\
+            if (i == 0)\{\
+                lastTime = timeSeries[i];\
+                poisonedTimeStack.push(duration);\
+            \}\
+            else\{\
+                int timeDifferenceFromLastTime = timeSeries[i] - lastTime;\
+                while(!poisonedTimeStack.empty())\{\
+                    if(timeDifferenceFromLastTime - poisonedTimeStack.peek() >= 0)\{\
+                        totalPoisonedTime += poisonedTimeStack.peek();\
+                        timeDifferenceFromLastTime = timeDifferenceFromLastTime - poisonedTimeStack.pop();\
+                    \}\
+                    else\{\
+                        totalPoisonedTime += timeDifferenceFromLastTime;\
+                        poisonedTimeStack.clear();\
+                    \}\
+                \}\
+                lastTime = timeSeries[i];\
+                poisonedTimeStack.push(duration);\
+            \}\
+        \}\
+        while(!poisonedTimeStack.empty())\{\
+            totalPoisonedTime += poisonedTimeStack.pop();\
+        \}\
+        return totalPoisonedTime;\
+    \}\
+\}}
